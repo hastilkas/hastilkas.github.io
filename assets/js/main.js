@@ -7,7 +7,7 @@
   var projects = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  var CATEGORY_NAMES = { bots: 'Telegram-боты', sites: 'Сайты', parsers: 'Парсеры' };
+  var CATEGORY_NAMES = { ai: 'ИИ-боты', bots: 'Telegram-боты', sites: 'Сайты', parsers: 'Парсеры' };
 
   /* ---------- маленький помощник для создания элементов ---------- */
   function el(tag, cls, text) {
