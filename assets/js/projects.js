@@ -51,7 +51,8 @@ window.PROJECTS = [
       alt: "Диалог с ИИ-консультантом: подбор кофе для турки, корзина, оформление заказа, сообщение менеджеру и повторный визит"
     },
     links: [
-      { label: "Поговорить с ботом", href: "https://ai-consultant-one.vercel.app", primary: true }
+      { label: "Поговорить с ботом", href: "https://ai-consultant-one.vercel.app", primary: true },
+      { label: "Код на GitHub", href: "https://github.com/hastilkas/ai-consultant" }
     ]
   },
 
