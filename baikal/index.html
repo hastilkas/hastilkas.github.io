@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сутки света — Байкал</title>
+  <meta name="description" content="Интерактивная прогулка по льду Байкала: прокручиваете страницу, и проходят сутки. Небо, лёд и северное сияние нарисованы одним шейдером.">
+  <meta name="theme-color" content="#05080f">
+  <meta property="og:title" content="Сутки света — Байкал">
+  <meta property="og:description" content="Один мартовский день на льду Байкала. Прокрутка как время: от сумерек до северного сияния.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hastilkas.github.io/baikal/">
+  <meta property="og:image" content="https://hastilkas.github.io/baikal/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;1,7..72,300;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <canvas id="sky-notes" aria-hidden="true"></canvas>
+  <div class="veil" id="veil"><span>Байкал</span></div>
+
+  <header class="hud hud-top">
+    <a class="mark" href="#top" aria-label="В начало">
+      <em>Сутки света</em>
+      <span>Байкал, март</span>
+    </a>
+    <button class="sound" id="sound" type="button" aria-pressed="false">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="sound-label">Звук выключен</span>
+    </button>
+  </header>
+
+  <aside class="hud hud-bottom">
+    <p class="hint" id="hint" aria-live="polite">Листайте вниз, и время пойдёт</p>
+
+    <div class="clock">
+      <div class="clock-text">
+        <span class="clock-time" id="clock-time">06:00</span>
+        <span class="clock-chapter" id="clock-chapter">Предрассветье</span>
+        <ul class="strip" id="strip" aria-label="Цвета неба в эту минуту">
+          <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+      </div>
+      <svg class="dial" id="dial" viewBox="0 0 120 120" role="slider" tabindex="0"
+           aria-label="Время суток" aria-valuemin="5" aria-valuemax="26" aria-valuenow="6" aria-valuetext="06:00">
+        <circle class="dial-track" cx="60" cy="60" r="48"/>
+        <path class="dial-night" id="dial-night" d=""/>
+        <g class="dial-ticks">
+          <line x1="60" y1="6" x2="60" y2="14"/>
+          <line x1="106" y1="60" x2="114" y2="60"/>
+          <line x1="60" y1="106" x2="60" y2="114"/>
+          <line x1="6" y1="60" x2="14" y2="60"/>
+        </g>
+        <text x="60" y="27" class="dial-num">0</text>
+        <text x="97" y="63" class="dial-num">6</text>
+        <text x="60" y="100" class="dial-num">12</text>
+        <text x="23" y="63" class="dial-num">18</text>
+        <line class="dial-hand" id="dial-hand" x1="60" y1="60" x2="60" y2="14"/>
+        <circle class="dial-sun" id="dial-sun" cx="60" cy="12" r="5.5"/>
+      </svg>
+    </div>
+  </aside>
+
+  <main id="top">
+    <section class="chapter hero" data-hour="6" data-name="Предрассветье" data-hint="Листайте вниз, и время пойдёт">
+      <div class="inner at-left">
+        <p class="kicker">Байкал, март. 53° северной широты</p>
+        <h1 class="hero-title" aria-label="Сутки света">
+          <span class="line">Сутки</span>
+          <span class="line line-2">света</span>
+        </h1>
+        <p class="lede">Один мартовский день на льду Байкала. Прокручивайте страницу, и время пойдёт: от первых сумерек до северного сияния.</p>
+        <div class="scroll-cue" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="7.15" data-name="Восход" data-hint="Ведите курсором по льду: под ним проступят трещины">
+      <div class="inner at-right">
+        <p class="kicker"><time>07:09</time>Восход</p>
+        <h2>Солнце встаёт из-за восточного берега</h2>
+        <p>Первые минуты свет идёт почти горизонтально, и лёд становится медным. Через четверть часа медь уйдёт, останется только блеск на дорожке к солнцу.</p>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="10.5" data-name="Прозрачный лёд" data-hint="Щёлкните по льду, и он треснет">
+      <div class="inner at-left">
+        <p class="kicker"><time>10:30</time>Утро</p>
+        <h2>Лёд толщиной почти в метр, и сквозь него видно воду</h2>
+        <p>Ветер сдувает снег, и байкальский лёд остаётся прозрачным, как стекло. В его толще слоями застывают пузыри метана. Лёд трещит, гудит и стреляет, а по нему всё равно ездят машины.</p>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="13" data-name="Полдень" data-hint="Полдень: солнце выше всего">
+      <div class="inner at-wide">
+        <p class="kicker"><time>13:00</time>Полдень</p>
+        <h2>Самое глубокое озеро на планете</h2>
+        <dl class="figures">
+          <div><dt><span data-count="1642">1642</span><span class="unit">м</span></dt><dd>максимальная глубина</dd></div>
+          <div><dt><span data-count="23615">23&nbsp;615</span><span class="unit">км³</span></dt><dd>пресной воды, около пятой части мировых запасов</dd></div>
+          <div><dt><span data-count="25">25</span><span class="unit">млн</span></dt><dd>лет: Байкал старше всех озёр Земли</dd></div>
+          <div><dt><span data-count="300">300</span><span class="unit">+</span></dt><dd>рек впадает, вытекает одна Ангара</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="18.75" data-name="Золотой час" data-hint="Палитра внизу справа обновляется вместе с небом">
+      <div class="inner at-right">
+        <p class="kicker"><time>18:45</time>Золотой час</p>
+        <h2>Цвета этой страницы берутся с неба</h2>
+        <p>Палитру никто не выбирал. Несколько раз в секунду страница считывает цвета прямо из сцены и перекрашивает интерфейс. Вот небо этой минуты:</p>
+        <ul class="swatches" id="swatches">
+          <li><i></i><b>Зенит</b><code>—</code></li>
+          <li><i></i><b>У солнца</b><code>—</code></li>
+          <li><i></i><b>Горизонт</b><code>—</code></li>
+          <li><i></i><b>Берег</b><code>—</code></li>
+          <li><i></i><b>Лёд</b><code>—</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="19.33" data-name="Синий час" data-hint="Смотрите налево от заката: розовое над синим">
+      <div class="inner at-left">
+        <p class="kicker"><time>19:20</time>Синий час</p>
+        <h2>Пояс Венеры</h2>
+        <p>После заката над горизонтом напротив солнца встаёт розовая полоса, а под ней синяя. Синее — тень самой Земли, отброшенная на атмосферу. Минут двадцать она лежит над льдом, потом растворяется в ночи.</p>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="22.5" data-name="Ночь" data-hint="Нажмите на небо, чтобы зажечь звезду">
+      <div class="inner at-right">
+        <p class="kicker"><time>22:30</time>Ночь</p>
+        <h2>Здесь видно Млечный Путь</h2>
+        <p>До Иркутска больше двухсот километров, и небо над льдом тёмное по-настоящему. Нажмите на небо, чтобы зажечь звезду. Несколько звёзд сложатся в ваше созвездие.</p>
+        <p class="aside constellation">
+          <span id="star-count">Пока ни одной звезды</span>
+          <button type="button" class="link-btn" id="clear-stars" hidden>Стереть</button>
+        </p>
+      </div>
+    </section>
+
+    <section class="chapter" data-hour="25" data-name="Сияние" data-hint="Ведите курсором по небу: занавес дрогнет">
+      <div class="inner at-left">
+        <p class="kicker"><time>01:00</time>Глубокая ночь</p>
+        <h2>Сияние над Байкалом</h2>
+        <p>На этой широте полярное сияние бывает редко, только в сильные магнитные бури. Здесь оно послушнее: ведите курсором по небу, и занавес дрогнет.</p>
+      </div>
+    </section>
+
+    <section class="chapter finale" data-hour="25.4" data-name="Кадр на память" data-hint="Сохраните кадр или начните сутки заново">
+      <div class="inner at-wide">
+        <p class="kicker"><time>01:24</time>Последний кадр</p>
+        <h2>Кадр на память</h2>
+        <p>Всё, что вы видели, нарисовано одним шейдером прямо в браузере: ни одной фотографии, ни одного видео. Звук тоже синтезируется на лету.</p>
+        <div class="actions">
+          <button type="button" class="btn" id="save">Сохранить кадр</button>
+          <button type="button" class="btn btn-quiet" id="restart">Начать сутки заново</button>
+        </div>
+        <p class="credit">Концепция, дизайн и код: <a href="https://hastilkas.github.io">hastil</a></p>
+      </div>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">Эта страница рисует сцену через JavaScript и WebGL. Включите JavaScript, чтобы увидеть Байкал.</p></noscript>
+</body>
+</html>
